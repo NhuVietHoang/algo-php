@@ -1,6 +1,7 @@
 # OOP IN PHP
 * người thực hiện: Nhữ Việt Hoàng.
-* Dowload và run code tại đường dẫn: https://github.com/NhuVietHoang/algo-php
+* Dowload và run code tại đường dẫn: https://github.com/NhuVietHoang/algo-php.
+
 Lập trình hướng đối tượng là lập trình hỗ trợ công nghệ đối tượng (OOP) giúp tăng năng xuất và đơn giản hóa công việc xây dựng phần mềm, bảo trì phần mềm, cho phép lập trình viên tập trung vào các đối tượng giống như trong thực tế.
 
 Có một vài ý kiến cho rằng lập trình hướng đối tượng dễ tiếp thu cho những người mới bắt đầu vì nó rất giống với thực tế nhưng bản thân tôi thì cho rằng phải nắm các phương pháp lập trình truyền thống thì lúc qua lập trình hướng đối tượng sẽ rất dễ.
