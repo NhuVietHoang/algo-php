@@ -1,4 +1,11 @@
 <?php
-$contents= file_get_contents('question.md');
-$arrayQuestions = explode("######",$contents);
-var_dump($arrayQuestions);
+function pluck($items, $key)
+{
+    return array_map( function($item) use ($key) {
+        return is_object($item) ? $item->$key : $item[$key];
+    }, $items);
+}
+pluck([
+    ['product_id' => 'prod-100', 'name' => 'Desk'],
+    ['product_id' => 'prod-200', 'name' => 'Chair'],
+], 'name');

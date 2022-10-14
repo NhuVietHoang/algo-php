@@ -1,16 +1,8 @@
 <?php
 namespace module;
+require_once "./module/Collection.php";
 
-class QuestionsList{
-    private  $listsQuestion = [];
-    public  function __construct($listsQuestion = [])
-    {
-        $this->listsQuestion = $listsQuestion;
-    }
-    public function Test($path){
-        $contents = file_get_contents($path);
-        return var_dump($contents);
-    }
+class QuestionsList extends Collection{
     public  function parse($path)
     {
         $contents = file_get_contents($path);
@@ -24,21 +16,7 @@ class QuestionsList{
      
         return $this;
     }
-    public function getAll()
-    {
-     return $this->listsQuestion;
-    }
-    public  function insertQuestion(Question  $question)
-    {
-        array_push($this->listsQuestion,$question);
-        return $this;
-    }
-
 }
-$itemQuestionList= new QuestionsList();
-
-
-var_dump($itemQuestionList->parse('question.md')->getAll());
 
 
 
