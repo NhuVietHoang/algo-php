@@ -56,6 +56,15 @@ nó sẽ tự động được gọi khi ta chuyền giữ liệu này vào thu�
 Được kích hoạt khi ta gọi một phương thức không được phép truy cập trong phạm vi của một phương thức tĩnh.
 
 # Thực Hành
+## cấu trúc:
+ - Phần thực hành tạo repo algo-php với cấu trúc thư mục tham khảo:
+   - Question.php
+   - Collection.php
+   - QuestionsList.php extent Collection
+   - test.php/index.php
+ - Question.php có các thuộc tính sau: câu số mấy (number), tiêu đề (title), nội dung câu hỏi (content), câu trả lời. 
+ - Trong QuestionsList.php phải có hàm parse($path) để đọc file questions.md, hàm all() để trả về danh sách các Question parse được từ file md
+ - QuestionList extend Collection (có các hàm all(), filter(), first(), last(), map(), pluck(), push(), add(), sortBy())
 
 ## Question.php
 class question sẽ lưu câu hỏi
@@ -71,21 +80,12 @@ class question sẽ lưu câu hỏi
     }
 
 ```
-## QuestionList.php
+## QuestionList.php kế thừa từ Collection 
 class QuestionList sẽ đọc và lưu câu hỏi file question.md 
 ```php
     namespace module;
 
 class QuestionsList{
-    private  $listsQuestion = [];
-    public  function __construct($listsQuestion = [])
-    {
-        $this->listsQuestion = $listsQuestion;
-    }
-    public function Test($path){
-        $contents = file_get_contents($path);
-        return var_dump($contents);
-    }
     public  function parse($path)
     {
         $contents = file_get_contents($path);
@@ -99,21 +99,11 @@ class QuestionsList{
      
         return $this;
     }
-    public function getAll()
-    {
-     return $this->listsQuestion;
-    }
-    public  function insertQuestion(Question  $question)
-    {
-        array_push($this->listsQuestion,$question);
-        return $this;
-    }
-
 }
 $itemQuestionList= new QuestionsList();
 
 
-var_dump($itemQuestionList->parse('question.md')->getAll());
+var_dump($itemQuestionList->parse('question.md')->All());
 
 ```
 kết quả trả về
@@ -134,3 +124,5 @@ kết quả trả về
 Đáp án
 
 ```
+
+

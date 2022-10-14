@@ -1,11 +1,38 @@
 <?php
-function pluck($items, $key)
+// function cmp($a, $b)
+// {
+//     if ($a == $b) {
+//         return 1;
+//     }
+//     return ($a > $b) ? 1 : -1;
+// }
+ 
+// $a = array(
+//     3,
+//     2,
+//     5,
+//     3,
+//     1
+// );
+ 
+// usort($a, "cmp");
+ 
+// foreach ($a as $key => $value) {
+//     echo "$key: $value<br />";
+// }
+function cmp($a, $b)
 {
-    return array_map( function($item) use ($key) {
-        return is_object($item) ? $item->$key : $item[$key];
-    }, $items);
+    if ($a == $b) {
+        return 0;
+    }
+    return ($a < $b) ? -1 : 1;
 }
-pluck([
-    ['product_id' => 'prod-100', 'name' => 'Desk'],
-    ['product_id' => 'prod-200', 'name' => 'Chair'],
-], 'name');
+
+$a = array(3, 2, 5, 6, 1);
+
+usort($a, "cmp");
+
+foreach ($a as $key => $value) {
+    echo "$key: $value\n";
+}
+
