@@ -1,7 +1,7 @@
 <?php
 // require_once "./module/Question.php";
 // require_once "./module/QuestionsList.php";
-require_once 'module/autoload.php';
+include 'module/autoload.php';
 $question = new module\Question("1+1 bằng mấy","bằng 2");
 
 $itemQuestionList= new \module\QuestionsList();
