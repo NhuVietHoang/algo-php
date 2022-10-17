@@ -11,9 +11,10 @@ class QuestionsList extends Collection{
         foreach ($arrayQuestions as $questions)
         {
               [$question,$answer]  = explode("####",$questions);
-               $this->listsQuestion[] = new Question($question,$answer);
+			  [$titles,$content]   = explode('?',$question);
+			  [$number,$title]     = explode('.',$titles);
+               $this->listsQuestion[] = new Question($number,$title,$content,$answer);
         }
-     
         return $this;
     }
 }

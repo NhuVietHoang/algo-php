@@ -1,10 +1,14 @@
 <?php
 namespace  module;
 class Question{
-    public  $question;
+	public $number;
+	public $title;
+	public $content;
     public  $answer;
-    public  function __construct($question,$answer){
-        $this->question = $question;
+    public  function __construct($number,$title,$content,$answer){
+		$this->number = $number;
+		$this->title = $title;
+        $this->content = $content;
         $this->answer = $answer;
     }
 }

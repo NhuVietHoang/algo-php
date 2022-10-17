@@ -17,18 +17,22 @@ class Collection
 	public function first(){
 		return reset($this->listsQuestion);
 	}
+
 	public function last(){
 		return end($this->listsQuestion);
 	}
+
 	public function map($callback){
 		return array_map($callback,$this->listsQuestion);
 	}
+
 	function pluck($items, $key)
 	{
     return array_map( function($item) use ($key) {
         return is_object($item) ? $item->$key : $item[$key];
     }, $items);
 	}
+
 	public function push(Question $question){
 		array_push($this->listsQuestion,$question);
         return $this;

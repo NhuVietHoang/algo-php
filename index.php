@@ -1,12 +1,9 @@
 <?php
-// require_once "./module/Question.php";
-// require_once "./module/QuestionsList.php";
 include 'module/autoload.php';
-$question = new module\Question("1+1 bằng mấy","bằng 2");
+$question = new module\Question("số n","toán lớp 1", "1+1=?","2");
 
 $itemQuestionList= new \module\QuestionsList();
 $itemQuestionList->push($question);
+echo '<pre>' , var_dump($itemQuestionList->parse('question.md')->all()) , '</pre>';
 
-var_dump($itemQuestionList->parse('question.md')->all());
-// var_dump($itemQuestionList->pluck($itemQuestionList->parse('question.md')->all(),'question'));
 

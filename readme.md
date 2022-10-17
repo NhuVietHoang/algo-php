@@ -67,17 +67,21 @@ nó sẽ tự động được gọi khi ta chuyền giữ liệu này vào thu�
  - QuestionList extend Collection (có các hàm all(), filter(), first(), last(), map(), pluck(), push(), add(), sortBy())
 
 ## Question.php
-class question sẽ lưu câu hỏi
+class question sẽ lưu câu hỏi có các thuộc tính Number ,title,content,answer
 ```php
-    namespace  module;
-    class Question{
-        public  $question;
-        public  $answer;
-        public  function __construct($question,$answer){
-            $this->question = $question;
-            $this->answer = $answer;
-        }
+namespace  module;
+class Question{
+	public $number;
+	public $title;
+	public $content;
+    public  $answer;
+    public  function __construct($number,$title,$content,$answer){
+		$this->number = $number;
+		$this->title = $title;
+        $this->content = $content;
+        $this->answer = $answer;
     }
+}
 
 ```
 ## QuestionList.php kế thừa từ Collection 
@@ -85,7 +89,7 @@ class QuestionList sẽ đọc và lưu câu hỏi file question.md
 ```php
     namespace module;
 
-class QuestionsList{
+class QuestionsList extends Collection{
     public  function parse($path)
     {
         $contents = file_get_contents($path);
@@ -94,34 +98,58 @@ class QuestionsList{
         foreach ($arrayQuestions as $questions)
         {
               [$question,$answer]  = explode("####",$questions);
-               $this->listsQuestion[] = new Question($question,$answer);
+			  [$titles,$content]   = explode('?',$question);
+			  [$number,$title]     = explode('.',$titles);
+               $this->listsQuestion[] = new Question($number,$title,$content,$answer);
         }
-     
         return $this;
     }
 }
-$itemQuestionList= new QuestionsList();
-
-
-var_dump($itemQuestionList->parse('question.md')->All());
 
 ```
 kết quả trả về
 ```php
-    array(156) { [0]=> object(module\Question)#1 (2) { ["question"]=> string(13) "Khabanhsdasda" ["answer"]=> string(15) "Hoaádasangbanh" } [1]=> object(module\Question)#3 (2) { ["question"]=> string(333) " 1. Output là gì? ```javascript function sayHi() { console.log(name); console.log(age); var name = "Lydia"; let age = 21; } sayHi(); ``` - A: `Lydia` và `undefined` - B: `Lydia` và `ReferenceError` - C: `ReferenceError` và `21` - D: `undefined` và `ReferenceError`
+   array(156) {
+  [0]=>
+  object(module\Question)#2 (4) {
+    ["number"]=>
+    string(6) "số n"
+    ["title"]=>
+    string(13) "toán lớp 1"
+    ["content"]=>
+    string(5) "1+1=?"
+    ["answer"]=>
+    string(1) "2"
+  }
+  [1]=>
+  object(module\Question)#4 (4) {
+    ["number"]=>
+    string(2) " 1"
+    ["title"]=>
+    string(15) " Output là gì"
+    ["content"]=>
+    string(335) "
+
+```javascript
+function sayHi() {
+  console.log(name);
+  console.log(age);
+  var name = "Lydia";
+  let age = 21;
+}
+
+sayHi();
+```
+
+- A: `Lydia` và `undefined`
+- B: `Lydia` và `ReferenceError`
+- C: `ReferenceError` và `21`
+- D: `undefined` và `ReferenceError`
+
 Đáp án
---- " } [2]=> object(module\Question)#4 (2) { ["question"]=> string(314) " 2. Output sẽ là gì? ```javascript for (var i = 0; i < 3; i++) { setTimeout(() => console.log(i), 1); } for (let i = 0; i < 3; i++) { setTimeout(() => console.log(i), 1); } ``` - A: `0 1 2` and `0 1 2` - B: `0 1 2` and `3 3 3` - C: `3 3 3` and `0 1 2`
-Đáp án
---- " } [3]=> object(module\Question)#5 (2) { ["question"]=> string(353) " 3. Output sẽ là gì? ```javascript const shape = { radius: 10, diameter() { return this.radius * 2; }, perimeter: () => 2 * Math.PI * this.radius }; shape.diameter(); shape.perimeter(); ``` - A: `20` and `62.83185307179586` - B: `20` and `NaN` - C: `20` and `63` - D: `NaN` and `63`
-Đáp án
---- " } [4]=> object(module\Question)#6 (2) { ["question"]=> string(177) " 4. Output là gì? ```javascript +true; !"Lydia"; ``` - A: `1` and `false` - B: `false` and `NaN` - C: `false` and `false`
-Đáp án
---- " } [5]=> object(module\Question)#7 (2) { ["question"]=> string(341) " 5. Cái nào đúng? ```javascript const bird = { size: "small" }; const mouse = { name: "Mickey", small: true }; ``` - A: `mouse.bird.size` không hợp lệ - B: `mouse[bird.size]` không hợp lệ - C: `mouse[bird["size"]]` không hợp lệ - D: Tất cả đều hợp lệ
-Đáp án
---- " } [6]=> object(module\Question)#8 (2) { ["question"]=> string(263) " 6. Output là gì? ```javascript let c = { greeting: "Hey!" }; let d; d = c; c.greeting = "Hello"; console.log(d.greeting); ``` - A: `Hello` - B: `Hey` - C: `undefined` - D: `ReferenceError` - E: `TypeError`
-Đáp án
---- " } [7]=> object(module\Question)#9 (2) { ["question"]=> string(312) " 7. Output là gì? ```javascript let a = 3; let b = new Number(3); let c = 3; console.log(a == b); console.log(a === b); console.log(b === c); ``` - A: `true` `false` `true` - B: `false` `false` `true` - C: `true` `false` `false` - D: `false` `true` `true`
-Đáp án
+
+
+---
 
 ```
 
