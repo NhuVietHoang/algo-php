@@ -109,26 +109,20 @@ class QuestionsList extends Collection{
 ```
 kết quả trả về
 ```php
-   array(156) {
-  [0]=>
-  object(module\Question)#2 (4) {
-    ["number"]=>
-    string(6) "số n"
-    ["title"]=>
-    string(13) "toán lớp 1"
-    ["content"]=>
-    string(5) "1+1=?"
-    ["answer"]=>
-    string(1) "2"
-  }
-  [1]=>
-  object(module\Question)#4 (4) {
-    ["number"]=>
-    string(2) " 1"
-    ["title"]=>
-    string(15) " Output là gì"
-    ["content"]=>
-    string(335) "
+   (
+    [0] => module\Question Object
+        (
+            [number] => số n
+            [title] => toán lớp 1
+            [content] => 1+1=?
+            [answer] => 2
+        )
+
+    [1] => module\Question Object
+        (
+            [number] =>  1
+            [title] =>  Output là gì
+            [content] => 
 
 ```javascript
 function sayHi() {
